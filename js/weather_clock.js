@@ -1,4 +1,4 @@
-var Clock = React.createClass({
+var WeatherClock = React.createClass({
   getInitialState: function(){
     var geo = navigator.geolocation;
     geo.getCurrentPosition(this.setLocation);
@@ -21,7 +21,7 @@ var Clock = React.createClass({
         url = "http://api.openweathermap.org/data/2.5/weather?lat=#A&lon=#B",
         lat = this.state.coords.latitude,
         lon = this.state.coords.longitude,
-        setWeather = this.setWeather.bind(this);
+        setWeather = this.setWeather;
     url = url.replace(/#A/, lat).replace(/#B/, lon);
 
     xmlhttp = window.XMLHttpRequest && new window.XMLHttpRequest() ||
@@ -83,6 +83,6 @@ var Clock = React.createClass({
 });
 
 React.render(
-  <Clock/>,
+  <WeatherClock/>,
   document.getElementById('weather-clock')
 )

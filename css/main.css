@@ -1,4 +1,5 @@
 * {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -11,4 +12,41 @@ body {
   display: block;
   margin: 20px;
   padding: 20px;
+}
+
+ul.tab-header {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+ul.tab-header > li {
+  display: block;
+  float: left;
+  padding: 15px;
+}
+
+ul.tab-header > li.selected {
+  font-weight: bolder;
+}
+
+ul.name-list > li {
+  padding: 5px;
+}
+
+ul.name-list > li:nth-child(even) {
+  background-color: #DDD;
+}
+
+.name-input {
+  margin: 5px;
+  font-size: 18px;
+}
+
+.tab-content {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }

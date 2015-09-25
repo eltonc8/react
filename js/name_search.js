@@ -4,7 +4,8 @@ var NameSearch = React.createClass({
   },
 
   handleClick: function (event){
-    this.setState({searchString: event.currentTarget.innerHTML});
+    var name = event.currentTarget.innerHTML.match(/[a-z]+/i)[0];
+    this.setState({searchString: name});
   },
 
   handleSearch: function(event){
@@ -12,28 +13,20 @@ var NameSearch = React.createClass({
   },
 
   render: function() {
-    var list = this.props.boys_name,
+    var list = this.props.names,
         searchString = this.state.searchString.trim().toLowerCase(),
         handleClick = this.handleClick;
 
-    if(searchString.length > 0){
-      // Filter the results.
-      list = list.filter(function(i){
-        return i.toLowerCase().match( searchString );
-      });
-    }
-
     return (
       <div>
-        <h4>2014 Top Names</h4>
-        <p>Source: <a href="http://www.babycenter.com/">Baby Center</a></p>
+        <h5>{this.props.sex}</h5>
+        <input className="name-input" type="text" value={this.state.searchString} onChange={this.handleSearch} placeholder="Search for Names" />
 
-        <h5>Baby Boys</h5>
-        <input type="text" value={this.state.searchString} onChange={this.handleSearch} placeholder="Search for Names Here" />
-
-        <ul>
-        { list.map(function(name){
-          return <li onClick={handleClick}>{name}</li>
+        <ul className="name-list">
+        { list.map(function(name, i){
+          var classNameVal = name.toLowerCase().match( searchString ) ? "" : "hidden";
+          var line = i+1 + ". " + name
+          return <li onClick={handleClick} className={classNameVal}>{line}</li>
         }) }
         </ul>
 
@@ -65,6 +58,9 @@ var girls_name = ["Sophia", "Emma", "Olivia", "Ava", "Isabella", "Mia", "Zoe", "
  "Julia", "Cora", "Lauren", "Piper", "Gianna", "Paisley", "Bella", "London", "Clara", "Cadence"]
 
 React.render(
-  <NameSearch boys_name={boys_name} girls_name={girls_name}/>,
+  <Tabs tabs={[
+    {title: "Boys' Name", list: boys_name},
+    {title: "Girls' Name", list: girls_name}
+  ]}/>,
   document.getElementById('name-search')
 )

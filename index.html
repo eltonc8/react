@@ -7,35 +7,10 @@
   <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
 </head>
 <body>
-  <div id="my-component">
+  <div id="my-component"></div>
+  <div id="weather-clock"></div>
 
-  </div>
-  <script type="text/jsx">
-  var ClickCounter = React.createClass({
-    getInitialState: function(){
-      return {count: 0};
-    },
-
-    click: function(event){
-      event.preventDefault();
-      this.setState({count: this.state.count + 1});
-    },
-
-    render: function(){
-      return (
-        <div>
-          <button onClick={this.click}>CLICK ME</button>
-          <span>{this.state.count}</span>
-        </div>
-      );
-    }
-  });
-
-  React.render(
-    <ClickCounter/>,
-    document.getElementById('my-component')
-  );
-
-  </script>
+  <script type="text/jsx" src="js/counter.js"></script>
+  <script type="text/jsx" src="js/weather_clock.js"></script>
 </body>
 </html>

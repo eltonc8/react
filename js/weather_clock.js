@@ -62,8 +62,8 @@ var Clock = React.createClass({
         lon = this.state.coords.longitude,
         weather = this.state.weather;
         condition = temperature = "";
-    lat = lat.toFixed(2);
-    lon = lon.toFixed(2);
+    lat = lat.toFixed(3) + (+lon > 0 ? " °S" : " °N");
+    lon = lon.toFixed(3) + (+lat > 0 ? " °E" : " °W");
 
     if (weather) {
       condition = weather.weather[0].main;
@@ -72,6 +72,7 @@ var Clock = React.createClass({
 
     return (
       <div>
+        <h4>Your location & current weather conditions</h4>
         <p>{timeString + " " + dateString}</p>
         <p>{"your location is " + lat + " " + lon}</p>
         <p>Current condition: {condition}</p>

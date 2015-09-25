@@ -11,8 +11,9 @@ var ClickCounter = React.createClass({
   render: function(){
     return (
       <div>
+        <h4>A counter that increases each time you press the button</h4>
         <button onClick={this.click}>CLICK ME</button>
-        <span>{this.state.count}</span>
+        <span> {this.state.count}</span>
       </div>
     );
   }

@@ -11,9 +11,9 @@ body {
 }
 
 .group {
+  min-height: 90vh;
   display: block;
-  margin: 20px;
-  padding: 20px;
+  margin-top: 10vh;
 }
 
 ul.tab-header {
@@ -28,21 +28,22 @@ ul.tab-header > li {
   padding: 15px;
 }
 
-ul.tab-header > li.selected {
+ul.tab-header h3.selected {
   font-weight: bolder;
-}
-
-ul.name-list > li {
-  padding: 5px;
-}
-
-ul.name-list > li:nth-child(even) {
-  background-color: #DDD;
 }
 
 .name-input {
   margin: 5px;
   font-size: 18px;
+}
+
+.name-input.row {
+  margin: 10px;
+}
+
+ul.name-list > li.btn {
+  border-radius: 0;
+  display: inline-block;
 }
 
 .tab-content {

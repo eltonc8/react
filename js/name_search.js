@@ -3,6 +3,10 @@ var NameSearch = React.createClass({
     return { searchString: '' };
   },
 
+  clearField: function(event){
+    this.setState({searchString: ""});
+  },
+
   handleClick: function (event){
     var name = event.currentTarget.innerHTML.match(/[a-z]+/i)[0];
     this.setState({searchString: name});
@@ -15,18 +19,26 @@ var NameSearch = React.createClass({
   render: function() {
     var list = this.props.names,
         searchString = this.state.searchString.trim().toLowerCase(),
-        handleClick = this.handleClick;
+        handleClick = this.handleClick,
+        colors = [" btn-primary", " btn-success", " btn-warning", " btn-danger"];
 
     return (
-      <div>
-        <h5>{this.props.sex}</h5>
-        <input className="name-input" type="text" value={this.state.searchString} onChange={this.handleSearch} placeholder="Search for Names" />
 
-        <ul className="name-list">
+      <div>
+        <h3>{this.props.sex}</h3>
+        <div className="row name-input">
+          <input className="name-input" type="text" value={this.state.searchString} onChange={this.handleSearch} placeholder="Search for Names" />
+          <button className="btn btn-info" onClick={this.clearField}>Clear Field</button>
+        </div>
+
+        <ul className="name-list clearfix row">
         { list.map(function(name, i){
           var classNameVal = name.toLowerCase().match( searchString ) ? "" : "hidden";
           var line = i+1 + ". " + name
-          return <li onClick={handleClick} className={classNameVal}>{line}</li>
+          return (<li onClick={handleClick}
+                    className={classNameVal + colors[i % 4] +
+                      " btn btn-lg col-xs-6 col-sm-4 col-md-3 col-lg-2"}>
+                  {line}</li>)
         }) }
         </ul>
 

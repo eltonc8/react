@@ -10,9 +10,38 @@
   <link rel="stylesheet" type="text/css" href="css/main.css"/>
 </head>
 <body>
-  <div class="group" id="my-component"></div>
-  <div class="group" id="weather-clock"></div>
-  <div class="group" id="name-search"></div>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Widgets in React</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#"></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#name-search">Names</a></li>
+          <li><a href="#counter">Counter</a></li>
+          <li><a href="#weather-clock">Weather</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <div class="group jumbotron" id="weather-clock"></div>
+    <div class="group jumbotron" id="counter"></div>
+    <div class="group jumbotron" id="name-search"></div>
+  </div>
+
 
   <script type="text/jsx" src="js/counter.js"></script>
   <script type="text/jsx" src="js/weather_clock.js"></script>
@@ -21,6 +50,20 @@
 
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="../../dist/js/bootstrap.min.js"></script>
+  <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+
+  <script>
+    $("a[href^='#']").on('click', function(e) {
+     e.preventDefault();
+     var hash = this.hash;
+     $('html, body').animate({
+         scrollTop: hash ? $(hash).offset().top : 0
+       }, 300, function(){
+         // when done, add hash to url
+         // (default click behaviour)
+         window.location.hash = hash;
+       });
+  });
+  </script>
 </body>
 </html>

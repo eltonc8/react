@@ -15,14 +15,17 @@ var Tabs = React.createClass({
         handleClick = this.handleClick;
     return (
       <div>
-        <h4>2014 Top Names</h4>
+        <h2>2014 Top Names</h2>
         <p>Source: <a href="http://www.babycenter.com/">Baby Center</a></p>
 
         <ul className="tab-header">
         {
           tabs.map(function(tab, i){
-            return <li onClick={handleClick} data-index={i}
-                   className={i == activeIndex ? "selected" : ""}>{tab.title}</li>;
+            return (<li onClick={handleClick} data-index={i} className="btn btn-link">
+                      <h3 className={(i == activeIndex ? "selected" : "")}>
+                      {tab.title}
+                      </h3>
+                    </li>);
           })
         }
         </ul>

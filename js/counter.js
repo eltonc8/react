@@ -9,11 +9,19 @@ var ClickCounter = React.createClass({
   },
 
   render: function(){
+    var colors = [" btn-primary", " btn-info", " btn-success", " btn-warning", " btn-danger"];
     return (
       <div>
-        <h4>A counter that increases each time you press the button</h4>
-        <button onClick={this.click}>CLICK ME</button>
-        <span> {this.state.count}</span>
+        <h2>A counter that increases each time you press the button</h2>
+        <div className="col-xs-8 col-sx-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-2 col-lg-offset-5">
+          <div className="row">
+            <span className="lead col-xs-12 text-center">Click the button!</span>
+          </div>
+          <div className="row">
+          <button className={"lead btn col-xs-12" + colors[this.state.count % 5]}
+                  onClick={this.click}>{this.state.count}</button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -21,5 +29,5 @@ var ClickCounter = React.createClass({
 
 React.render(
   <ClickCounter/>,
-  document.getElementById('my-component')
+  document.getElementById('counter')
 );

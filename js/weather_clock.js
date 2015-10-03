@@ -61,22 +61,23 @@ var WeatherClock = React.createClass({
         lat = this.state.coords.latitude,
         lon = this.state.coords.longitude,
         weather = this.state.weather;
-        condition = temperature = "";
+        condition = temperatureC = temperatureF = "";
     lat = lat.toFixed(3) + (+lon > 0 ? " °S" : " °N");
     lon = lon.toFixed(3) + (+lat > 0 ? " °E" : " °W");
 
     if (weather) {
       condition = weather.weather[0].main;
-      temperature = (+weather.main.temp - 273.15).toFixed(2);
+      temperatureC = (+weather.main.temp - 273.15).toFixed(1);
+      temperatureF = (+weather.main.temp * 9 / 5 - 459.67).toFixed(0);
     }
 
     return (
       <div>
-        <h4>Your location & current weather conditions</h4>
+        <h2>Your location & current weather conditions</h2>
         <p>{timeString + " " + dateString}</p>
         <p>{"your location is " + lat + " " + lon}</p>
         <p>Current condition: {condition}</p>
-        <p>Current temperature: {temperature}</p>
+        <p>Current temperature: {temperatureC} °C / {temperatureF} °F</p>
       </div>
     );
   },
